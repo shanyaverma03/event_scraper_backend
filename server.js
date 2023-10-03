@@ -1,6 +1,6 @@
 import express from "express";
 
-import { connectDB } from "./db/config";
+import { connectDB } from "./db/config.js";
 import { getEvents } from "./db/get-events.js";
 import { scrapeConfigs } from "./utils/scrapeConfig.js";
 import { addEvents } from "./db/add-events.js";
