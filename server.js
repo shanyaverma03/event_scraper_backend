@@ -1,9 +1,9 @@
 import express from "express";
 
-import { connectDB } from "../app/db/config.js";
-import { getEvents } from "../app/db/get-events.js";
-import { scrapeConfigs } from "../app/utils/scrapeConfig.js";
-import { addEvents } from "../app/db/add-events.js";
+import { connectDB } from "./db/config";
+import { getEvents } from "./db/get-events.js";
+import { scrapeConfigs } from "./utils/scrapeConfig.js";
+import { addEvents } from "./db/add-events.js";
 
 const app = express();
 const port = process.env.PORT || 8080;
