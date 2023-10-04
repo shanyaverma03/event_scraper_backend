@@ -14,6 +14,8 @@ app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", [
     "https://event-scraper.netlify.app/",
   ]);
+  res.append("Access-Control-Allow-Methods", "GET,POST");
+  res.append("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
 
