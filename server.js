@@ -10,6 +10,15 @@ const port = process.env.PORT || 8080;
 
 connectDB();
 
+app.use((req, res, next) => {
+  res.append("Access-Control-Allow-Origin", [
+    "https://event-scraper.netlify.app/",
+  ]);
+  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.append("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 app.get("/api/events", async (req, res) => {
   const events = await getEvents(req.query);
   res.json(events);
