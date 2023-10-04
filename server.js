@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 import { connectDB } from "./db/config.js";
 import { getEvents } from "./db/get-events.js";
@@ -10,14 +11,11 @@ const port = process.env.PORT || 8080;
 
 connectDB();
 
-app.use((req, res, next) => {
-  res.append("Access-Control-Allow-Origin", [
-    "https://event-scraper.netlify.app/",
-  ]);
-  res.append("Access-Control-Allow-Methods", "GET,POST");
-  res.append("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+app.use(
+  cors({
+    origin: "https://event-scraper.netlify.app/",
+  })
+);
 
 app.get("/api/events", async (req, res) => {
   const events = await getEvents(req.query);
